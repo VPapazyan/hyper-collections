@@ -1,0 +1,12 @@
+type: edu
+files:
+- name: test/Tests.java
+  visible: false
+- name: src/collections/Multiset.java
+  visible: true
+- name: src/collections/BiMap.java
+  visible: true
+- name: src/collections/Address.java
+  visible: true
+- name: src/collections/Main.java
+  visible: true

@@ -1,0 +1,140 @@
+<html lang="en">
+
+<h2>Description</h2>
+<p>
+    A <b>range</b> (or "interval") defines the boundaries around a contiguous span of values of some Comparable type;
+    <b>for example</b>, "integers from 1 to 100 inclusive."
+</p>
+
+<p>
+    <b>Types of Ranges: </b>
+    Each end of the range may be bounded or unbounded. If bounded, there is an associated endpoint value, and the range
+    is considered to be either <b>open</b> (<code>does not include the endpoint</code>) or <b>closed</b> (<code>includes
+    the endpoint</code>) on that side. With three possibilities on each side, this yields nine basic types of ranges,
+    enumerated below. (Notation: <b>a square bracket</b> (<code>[ ]</code>) indicates that the range is <b>closed</b> on
+    that side; a <b> parenthesis</b> (<code>( )</code>) means it is either <b>open</b> or <b>unbounded</b>. The
+    construct {x | statement} is read "the set of all x such that
+    statement.")
+</p>
+
+<h2>Objective</h2>
+<p>In this stage, you have to implement the <code>Range</code> class with the following endpoints.</p>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1">
+    <thead>
+    <tr>
+        <th>Notation</th>
+        <th>Definition</th>
+        <th>Factory Method</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td align="center">(a..b)</td>
+        <td align="center">{x | a &lt; x &lt; b}</td>
+        <td align="center">open(a, b)</td>
+    </tr>
+    <tr>
+        <td align="center">[a..b]</td>
+        <td align="center">{x | a &lt;= x &lt;= b}</td>
+        <td align="center">closed(a, b)</td>
+    </tr>
+    <tr>
+        <td align="center">(a..b]</td>
+        <td align="center">{x | a &lt; x &lt;= b}</td>
+        <td align="center">openClosed(a, b)</td>
+    </tr>
+    <tr>
+        <td align="center">[a..b)</td>
+        <td align="center">{x | a &lt;= x &lt; b}</td>
+        <td align="center">closedOpen(a, b)</td>
+    </tr>
+    <tr>
+        <td align="center">(a..+∞)</td>
+        <td align="center">{x | x &gt; a}</td>
+        <td align="center">greaterThan(a)</td>
+    </tr>
+    <tr>
+        <td align="center">[a..+∞)</td>
+        <td align="center">{x | x &gt;= a}</td>
+        <td align="center">atLeast(a)</td>
+    </tr>
+    <tr>
+        <td align="center">(-∞..b)</td>
+        <td align="center">{x | x &lt; b}</td>
+        <td align="center">lessThan(a)</td>
+    </tr>
+    <tr>
+        <td align="center">(-∞..b]</td>
+        <td align="center">{x | x &lt;= b}</td>
+        <td align="center">atMost(a)</td>
+    </tr>
+    <tr>
+        <td align="center">(-∞..+∞)</td>
+        <td align="center">{x}</td>
+        <td align="center">all()</td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li>Make the <code>Range</code> class generic.</li>
+    <li>Each of the factory methods implemented must return an instance of the <code>Range</code> object.</li>
+    <li>
+        When both endpoints exist, the upper endpoint may not be less than the lower. The endpoints may be equal only if
+        at least one of the bounds is closed:
+    </li>
+    <li>The arguments of the static factory method - <b>a, b</b> are instances which directly or indirectly extends the
+        <code>Comparable&lt;E&gt;</code> interface from Java Standard Library
+    </li>
+    <li>
+        <code>Range</code> class cannot be instantiated directly, we can get new instances through the factory method
+        only. Instance of the the <code>Range</code> class must provide the following methods -
+    </li>
+</ul>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1">
+    <thead>
+    <tr>
+        <th>Instance Method</th>
+        <th>Definition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td align="center">boolean contains(C value)</td>
+        <td align="center">Returns true if value is within the bounds of this range.</td>
+    </tr>
+    <tr>
+        <td align="center">boolean encloses(Range&lt;C&gt; other)</td>
+        <td align="center">Returns true if the bounds of other do not extend outside the bounds of this range.</td>
+    </tr>
+    <tr>
+        <td align="center">Range&lt;C&gt; intersection(Range&lt;C&gt; connectedRange)</td>
+        <td align="center">Returns the maximal range enclosed by both this range and connectedRange, if such a range
+            exists.
+        </td>
+    </tr>
+    <tr>
+        <td align="center">Range&lt;C&gt; span(Range&lt;C&gt; other)</td>
+        <td align="center">Returns the minimal range that encloses both this range and other.</td>
+    </tr>
+    <tr>
+        <td align="center">boolean isEmpty()</td>
+        <td align="center">Returns true if this range is of the form [v..v) or (v..v].</td>
+    </tr>
+    </tbody>
+</table>
+Where, <b>C</b> stands for Comparable.
+
+<p>Some of the corner cases are :-</p>
+<ul>
+    <li><code>[a..a]</code> : <b>a singleton range</b></li>
+    <li><code>[a..a)</code>;<code>(a..a]</code> : <b>empty ranges</b>; also valid</li>
+    <li><code>(a..a)</code>: <b>invalid</b>; an <code>InvalidArgumentException</code> must be thrown</li>
+    <li><code>null values</code>: <b>invalid</b>; an <code>InvalidArgumentException</code> must be thrown</li>
+</ul>
+
+<h2>Example</h2>
+
+
+</html>

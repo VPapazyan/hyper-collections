@@ -1,0 +1,22 @@
+type: edu
+files:
+- name: src/Main.java
+  visible: true
+- name: src/collections/ImmutableCollection.java
+  visible: true
+- name: src/Address.java
+  visible: true
+- name: src/collections/Serializer.java
+  visible: true
+- name: src/collections/InMemorySerializer.java
+  visible: true
+- name: test/Tests.java
+  visible: false
+- name: src/collections/Range.java
+  visible: true
+- name: src/collections/Multiset.java
+  visible: true
+- name: src/collections/SizeLimitedQueue.java
+  visible: true
+- name: src/collections/BiMap.java
+  visible: true

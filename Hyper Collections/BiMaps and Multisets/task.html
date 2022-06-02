@@ -1,0 +1,138 @@
+<h2>Description</h2>
+
+<p>A <strong>bimap</strong> (or &quot;bidirectional map&quot;) is a map that preserves the uniqueness of its values as well as that of its keys. This constraint enables bimaps to support an <code>&quot;inverse view&quot;</code>, which is another bimap containing the same entries as this bimap but with reversed keys and values.</p>
+
+<p>A <strong>multiset</strong> collection that supports order-independent equality, like&nbsp;<code>Set</code>, but may have duplicate elements. A multiset is also sometimes called a&nbsp;<em>bag</em>. Elements of a multiset that are equal to one another are referred to as&nbsp;<em>occurrences</em>&nbsp;of the same single element. The total number of occurrences of an element in a multiset is called the&nbsp;<em>count</em>&nbsp;of that element (the terms &quot;frequency&quot; and &quot;multiplicity&quot; are equivalent, but not used in this API). Since the count of an element is represented as an&nbsp;<code>int</code>, a multiset may never contain more than&nbsp;<code>Integer.MAX_VALUE</code>&nbsp;occurrences of any one element.</p>
+
+<h2>Observation</h2>
+
+<ul>
+    <li>Implement the following endpoints in the <code>BiMap&lt;K, V&gt;</code>&nbsp;class.</li>
+</ul>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1">
+    <thead>
+    <tr>
+        <th>Method (endpoints)</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align:center">put(K key, V value)</td>
+        <td style="text-align:center">Stores the key-value pair</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">putAll(Map&lt;K, V&gt; map)</td>
+        <td style="text-align:center">Stores all key-value pairs from a map</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">Set&lt;V&gt; values()</td>
+        <td style="text-align:center">Returns all the values of the map as a<strong> Set</strong></td>
+    </tr>
+    <tr>
+        <td style="text-align:center">forcePut(K key, V value)</td>
+        <td style="text-align:center">An alternate form of&nbsp;<code>put</code>&nbsp;that silently removes any existing entry with the value&nbsp;<code>value</code>&nbsp;before proceeding with the&nbsp;<code>put(K key, V value)</code>&nbsp;operation.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">BiMap&lt;V, K&gt; inverse()</td>
+        <td style="text-align:center">Returns the inverse view of this bimap, which maps each of this bimap&#39;s values to its associated key.</td>
+    </tr>
+    </tbody>
+</table>
+
+<ul>
+    <li>Implement the following endpoints in the <code>MultiSet&lt;E&gt;</code>&nbsp;class.</li>
+</ul>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1">
+    <thead>
+    <tr>
+        <th>Method</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="text-align:center">add(E element)</td>
+        <td style="text-align:center">Adds a single occurrence of the specified element to this multiset.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">add(E element, int occurrences)</td>
+        <td style="text-align:center">Adds a number of occurrences of an element to this multiset.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">boolean contains(E element)</td>
+        <td style="text-align:center">Determines whether this multiset contains the specified element.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">int count(E element)</td>
+        <td style="text-align:center">Returns the number of occurrences of an element in this multiset (the&nbsp;<em>count</em>&nbsp;of the element).</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">Set&lt;E&gt; elementSet()</td>
+        <td style="text-align:center">Returns the set of distinct elements contained in this multiset.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">remove(E element)</td>
+        <td style="text-align:center">Removes a&nbsp;<em>single</em>&nbsp;occurrence of the specified element from this multiset, if present.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">remove(E element, int occurrences)</td>
+        <td style="text-align:center">Removes a number of occurrences of the specified element from this multiset.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">setCount(E element, int count)</td>
+        <td style="text-align:center">Adds or removes the necessary occurrences of an element such that the element attains the desired count.</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">setCount(E element, int oldCount, int newCount)</td>
+        <td style="text-align:center">Conditionally sets the count of an element to a new value, as described in setCount(E element, int count), provided that the element has the expected current count.</td>
+    </tr>
+    </tbody>
+</table>
+
+<p><strong>Note:&nbsp;</strong>The&nbsp;<code>BiMap</code>&nbsp; and <code>MultiSet</code> class must be generic.</p>
+
+<h2>Examples</h2>
+
+<p><strong>BiMap&lt;K, V&gt;</strong></p>
+
+<pre>
+<code class="language-java">BiMap&lt;Character, Integer&gt; biMap = new BiMap&lt;&gt;();
+
+biMap.put('a', 3);
+biMap.putAll(Map.of('b', 4, 'c', 5));
+
+System.out.println(biMap.values()); // [3, 4, 5]
+
+biMap.forcePut('a', 8);
+
+System.out.println(biMap); // {a=8, b=4, c=5}
+
+System.out.println(biMap.inverse()); // {8=a, 4=b, 5=c}</code></pre>
+
+<p><strong>Multiset&lt;E&gt;</strong></p>
+
+<pre>
+<code class="language-java">Multiset&lt;Character&gt; multiset = new Multiset&lt;&gt;();
+multiset.add('a');
+multiset.add('b', 6);
+
+System.out.println(multiset); // [a, b, b, b, b, b, b]
+System.out.println(multiset.contains('c')); // false
+System.out.println(multiset.count('b')); // 6
+System.out.println(multiset.elementSet()); // ['a', 'b']
+
+multiset.remove('a');
+multiset.remove('b', 3);
+
+System.out.println(multiset); // [b, b, b]
+
+multiset.add('c');
+multiset.setCount('c', 2);
+multiset.setCount('b', 3, 4);
+
+System.out.println(multiset); // [b, b, b, b, c, c]</code></pre>
+
+<p>Note - You don&#39;t need to implement the main method.&nbsp;</p>

@@ -1,0 +1,51 @@
+<h2>Description</h2>
+
+<p>In the first stage of the project, you will create a simple immutable generic collection. The elements of the collection shouldn&#39;t change under any circumstances. To implement this properly is actually more difficult that it seems at the first glance.&nbsp;</p>
+
+<p>After completing this stage, you already understand with the general approaches used in this project. However, you might have a question - why do we need a collection that cannot be changed at all? In fact, working with immutable data is very convenient and allows avoiding many possible mistakes. <strong>Immutability</strong>&nbsp;is a crucial concept in this project, and you will understand the importance of this concept&nbsp;better in the next stages. For now, just try to remember the <code>String</code> class whose elements also cannot be modified.</p>
+
+<h2>Objectives</h2>
+
+<p>This stage will also reveal to you all key ideas, restrictions and agreements&nbsp;that you should use throughout the project to successfully complete it.</p>
+
+<ol>
+    <li>The class must be generic and named <code>ImmutableCollection</code> and nothing else.</li>
+    <li>It must contain a static factory method called <code>of</code> that takes an arbitrary number of elements as the arguments&nbsp;and returns an object of the class. The invocation <code>ImmutableCollection.of()</code> should create an empty collection whereas the invocation <code>ImmutableCollection.of(1, 2, 3, 4, 5)</code> should create a five-element collection.</li>
+    <li>If any of the passed elements is changing&nbsp;in the external code, it shouldn&#39;t be changed within the collection.</li>
+    <li>If any of the passed elements is null, the method <code>of</code> must throw <strong>NPE</strong>.</li>
+    <li>The class must contain the <code>boolean contains(E element)</code> method that checks whether the collection contains a specified&nbsp;element.</li>
+    <li>The class must provide <code>int size()</code> and <code>boolean isEmpty()</code> methods that check the size of the collection and whether it is empty&nbsp;respectively.</li>
+</ol>
+
+<p>[ALERT-primary]To implement this, we recommend you to use a useful utility class called <code>Objects</code>. It has a set of convenient static methods to work will <code>null</code> values, compare references and so on. Using this class&nbsp;will make your code more error-prone and well-readable.[/ALERT]</p>
+
+<h2>Examples</h2>
+
+<p>Here is an example of how to work with the collection.</p>
+
+<pre>
+<code class="language-java">ImmutableCollection&lt;?&gt; emptyCollection = ImmutableCollection.of();
+System.out.println(emptyCollection.size()); // 0
+System.out.println(emptyCollection.isEmpty()); // true
+
+Student student1 = new Student(1, "Student 1", "Email 1");
+
+ImmutableCollection&lt;Student&gt; addresses = ImmutableCollection.of(
+    student1,
+    new Student(2, "Student 2", "Email 2"),
+    new Student(3, "Student 3", "Email 3"),
+    new Student(4, "Student 4", "Email 4"),
+    new Student(5, "Student 5", "Email 5")
+);
+
+Student student = new Student(1, "Student 1", "Email 1");
+System.out.println(addresses.contains(student)); // true
+
+student1.setEmail("Some other Email");
+System.out.println(addresses.contains(student1)); // false
+
+ImmutableCollection&lt;Integer&gt; collection = ImmutableCollection.of(1, 2, 3, 4, 5);
+System.out.println(collection.isEmpty()); // false
+System.out.println(collection.size()); // 5</code></pre>
+
+<p>Note - You don&#39;t need to implement the main method.&nbsp;</p>
