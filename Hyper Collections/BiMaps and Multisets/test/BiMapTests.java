@@ -17,5 +17,5 @@ import static org.hyperskill.hstest.testcase.CheckResult.wrong;
 
 @SuppressWarnings("unused")
 public class BiMapTests extends StageTest<Object> {
-
+    // empty
 }
