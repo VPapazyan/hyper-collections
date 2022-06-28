@@ -1,6 +1,6 @@
 type: edu
 files:
-- name: test/Tests.java
+- name: test/SizeLimitedQueueTests.java
   visible: false
 - name: src/collections/Multiset.java
   visible: true

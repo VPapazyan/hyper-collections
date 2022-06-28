@@ -1,10 +1,14 @@
 import collections.BiMap;
 import collections.Multiset;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
   public static void main(String[] args) {
+    Map<String, Integer> test = new HashMap<>();
+    System.out.println(test.getClass().getTypeParameters()[1]);
+
 
     Multiset<Character> multiset = new Multiset<>();
     multiset.add('a');

@@ -19,34 +19,34 @@ import static org.hyperskill.hstest.testcase.CheckResult.wrong;
 public class ImmutabilityTests extends StageTest<Object> {
   private Class<?> immutableClass;
 
-  @DynamicTest(order = 1, feedback = "Could not Find Class ImmutableCollection")
+  @DynamicTest(order = 1)
   CheckResult itShouldTestForPresenceOfClass() {
     try {
       immutableClass = Class.forName("collections.framework.ImmutableCollection");
     } catch (ClassNotFoundException e) {
-      return wrong("Could not Find Class ImmutableCollection");
+      return wrong("Could not Find ImmutableCollection Class");
     }
     return correct();
   }
 
-  @DynamicTest(order = 2, feedback = "ImmutableCollection Class must be a final Class")
+  @DynamicTest(order = 2)
   CheckResult itShouldTestForFinalClass() {
     int modifiers = immutableClass.getModifiers();
     if (Modifier.isFinal(modifiers)) {
       return correct();
     }
-    return wrong("ImmutableCollection Class must be a final Class");
+    return wrong("ImmutableCollection must be a final Class");
   }
 
-  @DynamicTest(order = 3, feedback = "Class ImmutableCollection must a Generic Class")
+  @DynamicTest(order = 3)
   CheckResult itShouldTestForMethodsInClass() {
     if (immutableClass.getTypeParameters().length == 0) {
-      return wrong("Class Immutable Collection must a Generic Class.");
+      return wrong("Class Immutable Collection must be a Generic Class.");
     }
     return correct();
   }
 
-  @DynamicTest(order = 4, feedback = "None of the constructors should be public")
+  @DynamicTest(order = 4)
   CheckResult itShouldTestForPrivateConstructor() {
     for (var c : immutableClass.getDeclaredConstructors()) {
       if (Modifier.isPublic(c.getModifiers())) {

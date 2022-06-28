@@ -10,11 +10,13 @@ files:
   visible: true
 - name: src/collections/InMemorySerializer.java
   visible: true
-- name: test/Tests.java
-  visible: false
 - name: src/collections/BiMap.java
   visible: true
 - name: src/collections/Multiset.java
   visible: true
 - name: src/collections/Range.java
   visible: true
+- name: test/BiMapTests.java
+  visible: false
+- name: test/MultiSetTests.java
+  visible: false
