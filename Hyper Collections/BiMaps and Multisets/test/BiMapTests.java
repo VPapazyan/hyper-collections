@@ -70,10 +70,10 @@ public class BiMapTests extends StageTest<Object> {
     }
 
     private final Object[][] methods = new Object[][]{
-            new Object[]{"put", false, getClass().getTypeParameters()[1], new Class[]{Object[].class, Object[].class}},
-            new Object[]{"forcePut", false, getClass().getTypeParameters()[1], new Class[]{Object[].class, Object[].class}},
+            new Object[]{"put", false, new Object(), new Class[]{Object[].class, Object[].class}},
+            new Object[]{"forcePut", false, new Object(), new Class[]{Object[].class, Object[].class}},
             new Object[]{"putAll", false, void.class, new Class[]{Object[].class}},
-            new Object[]{"inverse", false, new Class[]{Object.class, Object.class}, new Class[]{}},
+            new Object[]{"inverse", false, new Object[]{Object.class, Object.class}, new Class[]{}},
     };
 
     private final LinkedHashMap<String, Method> methodMap = new LinkedHashMap<>();
